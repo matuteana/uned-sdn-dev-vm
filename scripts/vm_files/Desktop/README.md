@@ -60,7 +60,7 @@ You can also use this command:
 $ wget https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.3.0-Lithium/distribution-karaf-0.3.0-Lithium.tar.gz
 ```
 
-By default, when using a browser to download, files are saved into the ~/Downloads directory. The file size is ~250-300MB, which can download in 90secs.
+By default, when using a browser to download, files are saved into the ~/Downloads directory. The file size is ~250-300MB, which can download in 90 secs, or 30 min, it varies a lot.
 
 Follow these instructions to unpack the distribution:
 
