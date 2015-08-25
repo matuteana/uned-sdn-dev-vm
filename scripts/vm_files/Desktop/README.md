@@ -8,7 +8,7 @@ On this machine you will find all of the tools, utilities and code you will need
 
 # Why?
 
-Creating a stable build and test environment for ODL requires that a number of different versions of software all be installed properly, with the appropriate environment variables, and that various other aspects of the environment be aligned with that. This development VM packages all of that for you in one easy to use environment.
+Creating a stable build and test environment for ODL requires that a number of different versions of software all be installed properly, with the appropriate environment variables, and that various other aspects of the environment be aligned with that. This development VM packages all of that for you in one easy to use environment and includes instructions, with links to videos, for how to use the VM and explore ODL.
 
 # What Next?
 
@@ -20,9 +20,9 @@ A release of ODL is created at fixed periods, and is made available via download
 
 http://www.opendaylight.org/software/downloads
 
-That release has passed testing and so will be expected to work properly for most main use cases. It will, inevitably, also have bugs, as illustrated in this video: https://www.youtube.com/watch?v=H0-cewXbPYE
+The releases on that dowload page have passed testing and so will be expected to work properly for most main use cases. They will, inevitably, also have bugs, as illustrated in this video: https://www.youtube.com/watch?v=H0-cewXbPYE
 
-If you want the latest version of ODL, with bug fixes, then you can choose to build that yourself. You should note, though, that the latest code in the Git repository may NOT always work, so there is a balance to be struck here.
+If you want the latest version of ODL, with bug fixes, then you can choose to build that yourself. You should note, though, that the latest code in the Git repository may NOT always work either, so there is a balance to be struck here.
 
 # Clone and Build ODL and Tutorials with the Desktop Icons
 
@@ -30,15 +30,15 @@ This video shows how to use the desktop icons to build ODL: https://www.youtube.
 
 On the Desktop are a number of shortcuts to help automate starting, stopping, and checking the status of the built version of ODL. The "Start ODL" shortcut will copy the odl.cfg file from the Desktop to the org.apache.karaf.features.cfg file in the etc directory for the built assembly, and then start ODL. The Stop and Status scripts will stop the running instance of ODL and check the status of the running instance.
 
-This VM is shipped WITHOUT a populated ~/.m2/repository or git projects. The Clone and Build ODL and Tutorials script automates the process of cloning ODL, ODL tutorials and the ODL learning labs code, and running the Maven build for the "integration" component. This script can take hours to run, so think about letting it do so whilst you have a good lunch.
+This VM is shipped WITHOUT a populated ~/.m2/repository or git projects. The Clone and Build ODL script automates the process of cloning ODL and running the Maven build for the "integration" component. This script can take hours to run. There are similar scripts for the ODL tutorials and the ODL Python and Postman client code.
 
-Note that it is possible to start ODL twice, in which case you will need to use "ps -eaf | grep java" to get the process number of the running java process, and then "kill -9 <process number>" to kill it.
+Note that it is possible to start ODL twice, in which case you will need to use "ps -eaf | grep karaf" to get the process number of the running karaf process, and then "kill -9 <process number>" to kill it.
 
-Once ODL has been started, and it can take a while, open the Chrome browser from the desktop icon, and click on the "RestConf Documentation" or "DLUX UI" bookmarks. The login credentials are "admin/admin", if you are prompted for them.  When you see all of the bottom part of the web page populated with a list of APIs, or a UI page with a topology screen, then ODL has started. If not, wait a bit and then refresh the page.
+Once ODL has been started, and it can take a while, open the Chrome browser from the desktop icon, and click on the "RestConf Documentation" or "DLUX UI" bookmarks. The login credentials are "admin/admin", if you are prompted for them.  When you see all of the bottom part of the RestConf Documentation page populated with a list of APIs, or a UI page with a topology screen, then ODL has started. If not, wait a bit and then refresh the page.
 
 # Python and Postman Client Utilities
 
-Python code and Postman scripts for ODL are available at https://github.com/CiscoDevNet/cosc-learning-labs. You can use that code to help you understand how to use the REST APIs for ODL.
+Python code and Postman scripts for ODL are available at https://github.com/CiscoDevNet/cosc-learning-labs. You can use that code to help you understand how to use the REST APIs for ODL. See this video also: http://youtu.be/6GNxAzPmClk
 
 # Using the Build Bundle
 
@@ -54,7 +54,9 @@ That site is in the bookmarks included with the Chrome browser on this VM.
 
 You can also use this command:
 
+```bash
 $ wget https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.3.0-Lithium/distribution-karaf-0.3.0-Lithium.tar.gz
+```
 
 By default, when using a browser to download, files are saved into the ~/Downloads directory. The file size is ~250-300MB, which can download in 90secs.
 
@@ -62,19 +64,19 @@ Follow these instructions to unpack the distribution:
 
  - Open up a terminal with "Ctrl-Alt-t", which will open a Gnome Terminal.
 
- - In the terminal, enter "cd ~/Downloads"
+ - In the terminal, enter `cd ~/Downloads`
 
- - In the ~/Downloads directory type "ls" and expect to see something like:
+ - In the ~/Downloads directory type `ls` and expect to see something like:
 
 distribution-karaf-0.3.0-Lithium.tar.gz
 
- - Type "tar xf <bundle_file_name>", e.g. "tar xf distribution-karaf-0.3.0-Lithium.tar.gz" to unpack the compressed tar file.
+ - Type `tar xf <bundle_file_name>`, e.g. `tar xf distribution-karaf-0.3.0-Lithium.tar.gz` to unpack the compressed tar file.
 
- - Move the directory that is created to your location of choice, which we will call ODL_DIR below, e.g. "mv distribution-karaf-0.3.0-Lithium ~"
+ - Move the directory that is created to your location of choice, which we will call ODL_DIR below, e.g. `mv distribution-karaf-0.3.0-Lithium ~`
 
- - You also set the ODL_DIR environment variable with the command "export ODL_DIR=~/distribution-karaf-0.3.0-Lithium"
+ - You also set the ODL_DIR environment variable with the command `export ODL_DIR=~/distribution-karaf-0.3.0-Lithium`
 
- - In the terminal change directory to the ODL_DIR/bin, e.g. "cd ~/distribution-karaf-0.3.0-Lithium/bin", or, if you have set the variable above, "cd $ODL_DIR"
+ - In the terminal change directory to the ODL_DIR/bin, e.g. `cd ~/distribution-karaf-0.3.0-Lithium/bin", or, if you have set the variable above, "cd $ODL_DIR`
 
 **DO NOT delete your downloaded distribution bundle, you will be needing it.**
 
@@ -92,8 +94,10 @@ A peer of the etc directory, ../bin, contains scripts to run karaf itself, so th
 
 You can start ODL like this:
 
+```bash
 $ cd $ODL_DIR/bin
 $ ./karaf
+
 
 ...
 
@@ -101,11 +105,13 @@ Hit '<tab>' for a list of available commands
 and '[cmd] --help' for help on a specific command.
 Hit '<ctrl-d>' or type 'system:shutdown' or 'logout' to shutdown OpenDaylight.
 opendaylight-user@root>
+```
 
 The next steps vary depending on whether you are using a distribution, or you have built from git. If you are using a distribution, then you do NOT need to add the feature repositories as shown here, and you can proceed to the feature:install step below.
 
 If you have built from git then you can use the desktop icons. If you want to use karaf on a built distribution then you need to add the feature repositories, as in the example shown below. Note that the specific feature repositories you will need to add will change over time, so what is below is just an *example*. The definitive list of feature repositories can be found in the "featuresRepositories" section of the ~/git/odl-lithium/integration/distributions/karaf/target/assembly/etc/org.apache.karaf.features.cfg file. Also note that the configuration file has a comma-delimited list of feature repositories, whereas, at the karaf CLI, one needs to add the feature repositories one by one as shown below.
 
+```
 opendaylight-user@root>feature:repo-add mvn:org.apache.karaf.features/standard/3.0.3/xml/features
 opendaylight-user@root>feature:repo-add mvn:org.apache.karaf.features/enterprise/3.0.3/xml/features
 opendaylight-user@root>feature:repo-add mvn:org.ops4j.pax.web/pax-web-features/3.1.4/xml/features
@@ -113,12 +119,15 @@ opendaylight-user@root>feature:repo-add mvn:org.apache.karaf.features/spring/3.0
 opendaylight-user@root>feature:repo-add mvn:org.opendaylight.integration/features-integration-index/0.3.1-SNAPSHOT/xml/features
 
 opendaylight-user@root>
+```
 
 At the prompt above, you will need to enter the following, where the feature list will vary according to your needs:
 
+```
 opendaylight-user@root>feature:install odl-base-all odl-mdsal-broker odl-restconf odl-yangtools-models odl-dlux-core odl-mdsal-apidocs odl-netconf-all odl-openflowjava-protocol odl-openflowplugin-all odl-netconf-connector-ssh odl-bgpcep-pcep-all odl-bgpcep-bgp-all odl-l2switch-switch odl-nsf-all odl-aaa-authn odl-dlux-node odl-dlux-yangui odl-dlux-all
+```
 
-The feature list shown here is from the odl.cfg file on the desktop, which contains configuration for a feature set supporting Netconf/Yang, BGP-LS, PCEP and OpenFlow.
+The feature list shown here is from the odl.cfg file on the desktop, which contains configuration for a feature set supporting Netconf/Yang, BGP-LS, PCEP, OpenFlow and the available DLUX UI tools.
 
 # What to do When It Does Not Work the Second Time
 
@@ -126,24 +135,28 @@ For reasons related to caches and locks, ODL will often work a first time, for a
 
 When that happens, or as a matter of general practice, you should delete the distribution directory in ~, and create a new directory by untaring the downloaded bundle, OR to rebuild the distribution in the local git repo, using these commands:
 
- - cd
- - rm -rf distribution-karaf-0.3.0-Lithium/
- - cd Downloads/
- - tar xf distribution-karaf-0.3.0-Lithium.tar.gz 
- - mv distribution-karaf-0.3.0-Lithium ..
+```bash
+ $ cd
+ $ rm -rf distribution-karaf-0.3.0-Lithium/
+ $ cd Downloads/
+ $ tar xf distribution-karaf-0.3.0-Lithium.tar.gz 
+ $ mv distribution-karaf-0.3.0-Lithium ..
+```
 
 OR
 
-  - cd ~/git/odl-lithium/integration/distributions/karaf/
-  - mvn clean install -nsu
-
+```bash
+  $ cd ~/git/odl-lithium/integration/distributions/karaf/
+  $ mvn clean install -nsu
+  ```
+  
 # What to do When the Disk Fills Up
 
 If you build ODL on a regular basis, you will likely fill the Maven repository with "snapshots". Additionally, the projects in the git directory, if all built at once, can use up a lot of disk space. Since ODL is a growing project, how much exactly varies over time. It is likely that the machine disk will fill up if you try to build everything though.
 
 At the start of the Build ODL script (~odldev/bin/build_controller.sh), the snapshots in the Maven repository are deleted to save space.
 
-To save even more space, you can "rm -rf" the ~/.m2/repository directory. This will mean, though, that when you build the next time, the Maven repository will have to be re-populated, which will take some time (hours). 
+To save even more space, you can `rm -rf  ~/.m2/repository`. This will mean, though, that when you build the next time, the Maven repository will have to be re-populated, which will take some time (hours). 
 
 At the end of the script is a command that will find every Maven pom.xml and run a "clean" build, to remove all of the build artefacts. This is not run by default, so you have to copy it and run it yourself in the git directory if you think you need to.
 
@@ -151,8 +164,8 @@ At the end of the script is a command that will find every Maven pom.xml and run
 
 There are a number of techniques that one can use to optimise the performance of a Maven build. As always, there is a tradeoff between performance and accuracy, so think before you use these techniques:
 
- - No snapshot upgrades - The "-nsu" option will stop Maven downloading the snapshot metadata, which will speed up the build considerably.
-  - Offline - The "-o" option will run Maven offline, so that only the contents of the local repository, ~/.m2/repository, will be used for a build, i.e. Maven will not look for new artefacts in remote repositories and so will not be making HTTP requests during the build.
+ - No snapshot upgrades - The `-nsu` option will stop Maven downloading the snapshot metadata, which will speed up the build considerably.
+  - Offline - The `-o` option will run Maven offline, so that only the contents of the local repository, `~/.m2/repository`, will be used for a build, i.e. Maven will not look for new artefacts in remote repositories and so will not be making HTTP requests during the build.
 
 # Contents
 
