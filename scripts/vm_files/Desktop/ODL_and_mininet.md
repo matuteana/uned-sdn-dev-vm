@@ -2,25 +2,32 @@ See this video of how to use these instructions: https://youtu.be/ToIFalBYooA
 
 Mininet (http://mininet.org/) creates a realistic virtual network, running real kernel, switch and application code, on a single machine (VM, cloud or native), in seconds, with a single command, e.g.:
 
+```bash
 sudo mn --controller=remote,ip=127.0.0.1 --topo tree,3
+```
 
 Because you can easily interact with your network using the Mininet CLI (and API), customize it, share it with others, or deploy it on real hardware, Mininet is useful for development, teaching, and research.
 
 Mininet is also a great way to develop, share, and experiment with OpenFlow and Software-Defined Networking systems. In particular the OpenDaylight controller, by following the instructions below:
 
- - Open a terminal window (Ctrl-Alt-t) and "sudo mn --controller=remote,ip=127.0.0.1 --topo tree,3", where the sudo password is the odldev password (default ODLDEV). Note that best results are achieved if mininet is started *before* ODL is started.
+Open a terminal window (Ctrl-Alt-t) and type and enter:
 
- - Either, build, if necessary, and start ODL, using the desktop icons, OR
+`sudo mn   --controller=remote,ip=127.0.0.1 --topo tree,3`
 
- - Open the README and follow the instructions to start ODL. In summary, those instructions are:
-    - Download a controller bundle from OpenDaylight, using the bookmark link in Chrome
-    - Open a terminal window with Ctrl-Alt-t
-    - cd ~/Downloads
-    - "tar xf" the bundle file, and "mv distribution-karaf-0.3.0-Lithium .." (the name may change over time)
-    - "cd ~/distribution-karaf-0.3.0-Lithium/bin"
-    - "./karaf"
-    - opendaylight-user@root>feature:install <feature list from odl.cfg>
-    - Wait, for at least five minutes, for ODL to start up and for the karaf prompt to reappear
+Where the sudo password is " ODLDEV" by default. Note that best results are achieved if mininet is started *before* ODL is started.
+
+Either, build, if necessary, and start ODL, using the desktop icons, OR
+
+Open the README and follow the instructions to start ODL. In summary, those instructions are:
+
+ - Download a controller bundle from OpenDaylight, using the bookmark link in Chrome
+ - Open a terminal window with Ctrl-Alt-t
+ - `cd ~/Downloads`
+ - `tar xf` the bundle file, and `mv distribution-karaf-0.3.0-Lithium ..` (the name may change over time)
+ - `cd ~/distribution-karaf-0.3.0-Lithium/bin`
+ - `./karaf`
+ - `opendaylight-user@root>feature:install <feature list from odl.cfg>`
+ - Wait, for at least five minutes, for ODL to start up and for the karaf prompt to reappear
 
 - Use the "Lithium DLUX" bookmark in Chrome to display the DLUX UI, login "admin/admin"
 
