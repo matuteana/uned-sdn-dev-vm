@@ -29,7 +29,7 @@ There are many videos describing how to use VIRL here: http://virl-dev-innovate.
 
 When using VIRL with XRv based network elements for the purposes of working with Netconf/Yang with ODL and the Dev VM, you need to calculate RAM requirements as follows:
 
- - The Dev VM requires 4GB
+ - The Dev VM requires 4-6GB (when using the Yang UI, 6 GB is required)
  - VIRL, without any network devices running, requires 2GB
  - Each XRv network element requires 3GB
 
@@ -63,11 +63,11 @@ The exercises using VIRL networks are focused on using the RESTCONF APIs exposed
  - Look for the field below the "HTTPS clone URL" label on the right of the page
  - Click on the clipboard symbol to the right of that field
  - Open a terminal window
- - Type and enter: "cd; mkdir -p git; cd git"
- - Type and enter: "git clone " followed by the pasted (Ctrl-v) contents of the clipboard. e.g. "git clone https://github.com/CiscoDevNet/cosc-learning-labs.git".
- - Type and enter: "cd cosc-learning-labs/src"
- - Type and enter: "sudo pip3 install -e .", where the sudo password is, by default, "ODLDEV"
- - Type and enter: "sudo pip install -e .", where the sudo password is, by default, "ODLDEV"
+ - Type and enter: `cd; mkdir -p git; cd git`
+ - Type and enter: `git clone ` followed by the pasted (Ctrl-v) contents of the clipboard. e.g. `git clone https://github.com/CiscoDevNet/cosc-learning-labs.git`.
+ - Type and enter: `cd cosc-learning-labs/src`
+ - Type and enter: `sudo pip3 install -e .`, where the sudo password is, by default, "ODLDEV"
+ - Type and enter: `sudo pip install -e .`, where the sudo password is, by default, "ODLDEV"
 
 You will now have the client code, utility code and associated test VIRL topologies on the Dev VM, and you will have installed the Python client libraries used by the Python code for Python versions 2 and 3. Below you will use the test topologies in VM Maestro and the Python code in Eclipse.
 
@@ -116,7 +116,23 @@ In Eclipse, use the context menu on "01_inventory_mount.py" to  "Run As->Python 
 
 **Warning**
 
-The instructions above do work on the Dev VM, but sometimes do not for reasons that are unclear. If at first you don't succeed, then reboot the VM and try again, remembering to delete the distribution directory in ~ and create a new directory by untaring the downloaded bundle, or rebuilding the code in the local git repo.
+The instructions above do work on the Dev VM, but sometimes do not for reasons that are unclear.
 
+If at first you don't succeed, then reboot the VM and try again, remembering to delete the distribution directory in ~, and create a new directory by untaring the downloaded bundle, OR to rebuild the distribution in the local git repo, using these commands:
+
+```bash
+ $ cd
+ $ rm -rf distribution-karaf-0.3.0-Lithium/
+ $ cd Downloads/
+ $ tar xf distribution-karaf-0.3.0-Lithium.tar.gz 
+ $ mv distribution-karaf-0.3.0-Lithium ..
+```
+
+OR
+
+```bash
+  $ cd ~/git/odl-lithium/integration/distributions/karaf/
+  $ mvn clean install -nsu
+```
 
 

@@ -32,15 +32,19 @@ The instructions above do work on the Dev VM, but sometimes do not when, for exa
 
 If at first you don't succeed, then reboot the VM and try again, remembering to delete the distribution directory in ~, and create a new directory by untaring the downloaded bundle, OR to rebuild the distribution in the local git repo, using these commands:
 
- - cd
- - rm -rf distribution-karaf-0.3.0-Lithium/
- - cd Downloads/
- - tar xf distribution-karaf-0.3.0-Lithium.tar.gz 
- - mv distribution-karaf-0.3.0-Lithium ..
+```bash
+ $ cd
+ $ rm -rf distribution-karaf-0.3.0-Lithium/
+ $ cd Downloads/
+ $ tar xf distribution-karaf-0.3.0-Lithium.tar.gz 
+ $ mv distribution-karaf-0.3.0-Lithium ..
+```
 
 OR
 
-  - cd ~/git/odl-lithium/integration/distributions/karaf/
-  - mvn clean install -nsu
+```bash
+  $ cd ~/git/odl-lithium/integration/distributions/karaf/
+  $ mvn clean install -nsu
+```
 
 
