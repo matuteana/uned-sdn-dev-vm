@@ -16,13 +16,13 @@ The instructions below describe how to, either, build ODL, OR download a distrib
 
 # Why Would I Build ODL Rather Than Use the Released Distribution?
 
-A release of ODL is created at fixed periods, and is made available via download here:
+Release of ODL are created at fixed periods, and made available via download here:
 
 http://www.opendaylight.org/software/downloads
 
 The releases on that dowload page have passed testing and so will be expected to work properly for most main use cases. They will, inevitably, also have bugs, as illustrated in this video: https://www.youtube.com/watch?v=H0-cewXbPYE
 
-If you want the latest version of ODL, with bug fixes, then you can choose to build that yourself. You should note, though, that the latest code in the Git repository may NOT always work either, so there is a balance to be struck here.
+If you want the latest version of ODL, with bug fixes, then you can choose to build that yourself. You should note, though, that the latest code in the Git repository may not always work either, so there is a balance to be struck here.
 
 # Clone and Build ODL and Tutorials with the Desktop Icons
 
