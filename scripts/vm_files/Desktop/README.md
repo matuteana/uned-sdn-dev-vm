@@ -68,7 +68,7 @@ Follow these instructions to unpack the distribution:
 
  - In the ~/Downloads directory type `ls` and expect to see something like:
 
-distribution-karaf-0.3.0-Lithium.tar.gz
+`distribution-karaf-0.3.0-Lithium.tar.gz`
 
  - Type `tar xf <bundle_file_name>`, e.g. `tar xf distribution-karaf-0.3.0-Lithium.tar.gz` to unpack the compressed tar file.
 
@@ -76,7 +76,7 @@ distribution-karaf-0.3.0-Lithium.tar.gz
 
  - You also set the ODL_DIR environment variable with the command `export ODL_DIR=~/distribution-karaf-0.3.0-Lithium`
 
- - In the terminal change directory to the ODL_DIR/bin, e.g. `cd ~/distribution-karaf-0.3.0-Lithium/bin", or, if you have set the variable above, "cd $ODL_DIR`
+ - In the terminal change directory to the `$ODL_DIR/bin`, e.g. `cd ~/distribution-karaf-0.3.0-Lithium/bin", or, if you have set the variable above, "cd $ODL_DIR/bin`
 
 **DO NOT delete your downloaded distribution bundle, you will be needing it.**
 
@@ -86,9 +86,9 @@ See this video for an illustration of using karaf: https://www.youtube.com/watch
 
 ODL is started via Karaf, which loads features defined in the org.apache.karaf.features.cfg file if you use the start scripts, or defined manually via the karaf CLI, if you use the karaf CLI directly.
 
-If you built ODL from source, then your ODL_DIR is ~/git/odl-lithium/integration/distributions/karaf/target/assembly/, so the .cfg file is in ~/git/odl-lithium/integration/distributions/karaf/target/assembly/etc.
+If you built ODL from source, then your ODL_DIR is `~/git/odl-lithium/integration/distributions/karaf/target/assembly`, so the .cfg file is in `~/git/odl-lithium/integration/distributions/karaf/target/assembly/etc`.
 
-If you used the bundle method, then your ODL_DIR is (version depending) ~/distribution-karaf-0.3.0-Lithium and the .cfg file is in the ~/distribution-karaf-0.3.0-Lithium/etc directory.
+If you used the bundle method, then your ODL_DIR is (version depending) `~/distribution-karaf-0.3.0-Lithium` and the .cfg file is in the `~/distribution-karaf-0.3.0-Lithium/etc` directory.
 
 A peer of the etc directory, ../bin, contains scripts to run karaf itself, so that you can use the karaf CLI, or start karaf and have it load the features defined in the org.apache.karaf.features.cfg file. There are also stop and status scripts in the bin dir.
 
@@ -109,7 +109,7 @@ opendaylight-user@root>
 
 The next steps vary depending on whether you are using a distribution, or you have built from git. If you are using a distribution, then you do NOT need to add the feature repositories as shown here, and you can proceed to the feature:install step below.
 
-If you have built from git then you can use the desktop icons. If you want to use karaf on a built distribution then you need to add the feature repositories, as in the example shown below. Note that the specific feature repositories you will need to add will change over time, so what is below is just an *example*. The definitive list of feature repositories can be found in the "featuresRepositories" section of the ~/git/odl-lithium/integration/distributions/karaf/target/assembly/etc/org.apache.karaf.features.cfg file. Also note that the configuration file has a comma-delimited list of feature repositories, whereas, at the karaf CLI, one needs to add the feature repositories one by one as shown below.
+If you have built from git then you can use the desktop icons. If you want to use karaf on a built distribution then you need to add the feature repositories, as in the example shown below. Note that the specific feature repositories you will need to add will change over time, so what is below is just an *example*. The definitive list of feature repositories can be found in the "featuresRepositories" section of the `~/git/odl-lithium/integration/distributions/karaf/target/assembly/etc/org.apache.karaf.features.cfg` file. Also note that the configuration file has a comma-delimited list of feature repositories, whereas, at the karaf CLI, one needs to add the feature repositories one by one as shown below.
 
 ```
 opendaylight-user@root>feature:repo-add mvn:org.apache.karaf.features/standard/3.0.3/xml/features
@@ -133,7 +133,7 @@ The feature list shown here is from the odl.cfg file on the desktop, which conta
 
 For reasons related to caches and locks, ODL will often work a first time, for a given installation, but not a second time for the *same* installation in the same directory.
 
-When that happens, or as a matter of general practice, you should delete the distribution directory in ~, and create a new directory by untaring the downloaded bundle, OR to rebuild the distribution in the local git repo, using these commands:
+When that happens, or as a matter of general practice, you should delete the distribution directory, i.e. `rm -rf $ODL_DIR`, and create a new directory by untaring the downloaded bundle, OR to rebuild the distribution in the local git repo, using these commands:
 
 ```bash
  $ cd
@@ -152,13 +152,20 @@ OR
   
 # What to do When the Disk Fills Up
 
-If you build ODL on a regular basis, you will likely fill the Maven repository with "snapshots". Additionally, the projects in the git directory, if all built at once, can use up a lot of disk space. Since ODL is a growing project, how much exactly varies over time. It is likely that the machine disk will fill up if you try to build everything though.
+The base box for this project has a disk of 30GB, which is enough to build the integration module with some space to spare.
 
-At the start of the Build ODL script (~odldev/bin/build_controller.sh), the snapshots in the Maven repository are deleted to save space.
+If you build ODL on a regular basis you will likely fill the Maven repository with "snapshots". Additionally, if you build multiple projects in the git directory, in addition to the integration module, you can also use up a lot of disk space. Since ODL is a growing project, how much exactly varies over time. It is likely that the machine disk will fill up if you try to build too much though.
 
-To save even more space, you can `rm -rf  ~/.m2/repository`. This will mean, though, that when you build the next time, the Maven repository will have to be re-populated, which will take some time (hours). 
+At the start of the Build ODL script, `~odldev/bin/build_controller.sh`, the snapshots in the Maven repository are deleted to save space.
+
+To save even more space, you can `rm -rf  ~/.m2/repository`. This will mean, though, that when you build the next time, the Maven repository will have to be re-populated, though with fewer files as you will have removed old snapshots. A build with an empty repository can take some time (hours). 
 
 At the end of the script is a command that will find every Maven pom.xml and run a "clean" build, to remove all of the build artefacts. This is not run by default, so you have to copy it and run it yourself in the git directory if you think you need to.
+
+```bash
+$ cd /home/odldev/git
+$ find . -name pom.xml -exec mvn clean -fn -f -nsu {} \; 
+```
 
 # Build Optimisation
 
