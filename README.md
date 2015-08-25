@@ -6,7 +6,7 @@ This project contains a variety of build scripts and a Vagrant file for
 creating Vagrant boxes.
 
 For details about licencing for software bundled with this Dev VM
-see the [README](vagrant_files/Desktop/README.txt).
+see the [README](scripts/vm_files/Desktop/README.txt).
 
 # Acknowledgements
 
