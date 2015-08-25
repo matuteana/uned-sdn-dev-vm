@@ -1,1 +1,16 @@
-# uned-sdn-dev-vm
+Welcome to the UNED ODL Dev VM  project.
+
+The default username/password for the ODL Dev VM is "odldev/ODLDEV".
+
+This project contains a variety of build scripts and a Vagrant file for
+creating Vagrant boxes.
+
+For details about licencing for software bundled with this Dev VM
+see the [README](vagrant_files/Desktop/README.txt).
+
+# Acknowledgements
+
+This project was inspired by these projects:
+ - https://wiki.opendaylight.org/view/CrossProject:Integration_Group:Test_VMs
+ - https://github.com/CiscoDevNet/devnet-dev-vms
+ - https://github.com/dfarrell07/vagrant-opendaylight
