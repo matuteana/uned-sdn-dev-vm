@@ -8,7 +8,7 @@ On this machine you will find all of the tools, utilities and code you will need
 
 Why?
 ----
-Creating a stable build and test environment for ODL requires that a number of different versions of software all be installed properly, with the appropriate environment variables, and that various other aspects of the environment be aligned with that. This development VM packages all of that for you in one easy to use environment.§XW
+Creating a stable build and test environment for ODL requires that a number of different versions of software all be installed properly, with the appropriate environment variables, and that various other aspects of the environment be aligned with that. This development VM packages all of that for you in one easy to use environment.
 
 What Next?
 ---------
@@ -186,5 +186,3 @@ Installed on this machine, in addition to the standard Linux developer tools, ar
  - VMMaestro, which is the client GUI for Cisco´s Virtual Internet Routing Laboratory. Based on Eclipse distributed under the EPL 1.0, with additional components copyright Cisco Systems 2014, 2015. See http://virl.cisco.com
  - Google Chrome, with Postman, for accessing REST APIs. Copyright 2015 Google Inc. under these terms of service: https://www.google.com/chrome/browser/privacy/eula_text.html and https://www.getpostman.com/licenses/postman_base_app. See https://www.google.com/chrome/browser/desktop/ and https://www.getpostman.com/
  - PYang developer tools, for working with Yang data models. Distributed under this licence: https://github.com/mbj4668/pyang/blob/master/LICENSE. See https://github.com/mbj4668/pyang and the Eclipse plugin at http://bcsw.net/YangEclipsePlugIn
-
-The source for this README is:
