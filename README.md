@@ -5,8 +5,8 @@ The default username/password for the ODL Dev VM is "odldev/ODLDEV".
 This project contains a variety of build scripts and a Vagrant file for
 creating Vagrant boxes.
 
-For details about licencing for software bundled with this Dev VM
-see the [README](scripts/vm_files/Desktop/README.txt).
+For details about how to use this VM, and licencing for software bundled with this Dev VM
+see the [README](scripts/vm_files/Desktop/README.md).
 
 # Acknowledgements
 

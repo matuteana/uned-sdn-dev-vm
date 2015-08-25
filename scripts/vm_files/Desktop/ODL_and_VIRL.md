@@ -4,8 +4,7 @@ VIRL (http://virl.cisco.com) is a comprehensive network design and simulation pl
 
 A combination of this Dev VM running ODL, VIRL for virtual networks, and the client code project with VIRL topologies, Python and Postman collections allows you to experiment with ODL using Netconf/Yang, BGP-LS, PCEP and other networking capabilities.
 
-Instructions
-----------
+# Instructions
 
 The instructions here consist of these main parts, and assume that a controller is running as discussed in the README:
 
@@ -16,8 +15,7 @@ The instructions here consist of these main parts, and assume that a controller 
 
 At the end of these instructions you will have caused ODL to use Netconf to mount the Yang models for a number of IOS-XR based virtual network (XRv) devices.
 
-Installing VIRL
-------------
+# Installing VIRL
 
 The VIRL software is available for purchase from http://virl.cisco.com/about-virl-2. At the time of writing the academic price for VIRL is $79.99 and there is no free version of VIRL.
 
@@ -27,8 +25,7 @@ Note that VIRL only works, at the time of writing, with the latest versions of V
 
 There are many videos describing how to use VIRL here: http://virl-dev-innovate.cisco.com/videos.php
 
-VIRL RAM Settings
------------------
+# VIRL RAM Settings
 
 When using VIRL with XRv based network elements for the purposes of working with Netconf/Yang with ODL and the Dev VM, you need to calculate RAM requirements as follows:
 
@@ -38,8 +35,7 @@ When using VIRL with XRv based network elements for the purposes of working with
 
 So, for a network with one XRv network element, and allowing for 2GB for the host OS, you need a host machine with at least 11GB. For each additional XRv network element you would want to run, you would need an additional 3GB. The video above, showing 3 XRv network elements, was recorded on an iMac with 32GB of RAM.
 
-Static IP Addresses and "guest" User Admin Role
---------------------------------------
+# Static IP Addresses and "guest" User Admin Role
 
 The test topologies used with the client code below are designed with static IP addresses for the network elements, so that the addresses correspond to the configuration in the settings for the client code. It is a feature of OpenStack, which VIRL uses to manage virtual network element images, that using static IP addresses requires administrator privileges. That means that the "guest" user in OpenStack needs to be in the "admin" group, which it may not be by default.
 
@@ -49,8 +45,7 @@ The "User Workspace Management" application has a number of options on the left 
 
 In the "Edit User guest" page, select the "admin" option for the "Role" and then click on "Save".
 
-Installing VM Maestro
------------------
+# Installing VM Maestro
 
 VM Maestro is the Eclipse RCP based client for VIRL. The version of VM Maestro required for a given installation of VIRL for a given platform (Windows, OS X or Linux) is available at http://<VIRL server IP address>/download/.
 
@@ -60,8 +55,7 @@ The video above shows how to use VM Maestro for the purposes of this exercise. T
 
 When you first start VM Maestro, you will need to agree to licencing terms and conditions, and choose whether to provide usage information for "User Experience Improvement", then you will need to supply the IP address of the running VIRL server. The user name and password for the VIRL server in VM Maestro is "guest/guest", which is set by default.
 
-Cloning and Installing the Client Code
-------------------------------
+# Cloning and Installing the Client Code
 
 The exercises using VIRL networks are focused on using the RESTCONF APIs exposed by ODL, called by client code based on Python or Postman. The source for the client code, and some of the Postman collections, is in a Git project which needs to be "cloned" to the Dev VM and installed. The video above shows how to do that, and the steps are listed below.
 
@@ -77,8 +71,7 @@ The exercises using VIRL networks are focused on using the RESTCONF APIs exposed
 
 You will now have the client code, utility code and associated test VIRL topologies on the Dev VM, and you will have installed the Python client libraries used by the Python code for Python versions 2 and 3. Below you will use the test topologies in VM Maestro and the Python code in Eclipse.
 
-Using the Test Topologies in VM Maestro
---------------------------------
+# Using the Test Topologies in VM Maestro
 
 The project that you cloned in the previous section contains some test topologies designed to work with the Python code. Which test topology you use depends on the amount of RAM you have available, as discussed in the "Installing VIRL" section above.
 
@@ -99,8 +92,7 @@ You can open the project and then the "topology" directory, within which you wil
 
 Once the topology is opened you will see a topology diagram in the middle panel of the UI. In the menu bar at the top of the UI you will see a button with a green circle symbol with a white arrow in the middle. Click on that button to start the topology, and accept the default option to switch to the simulation view when prompted to do so.
 
-Using the Python Client Code in Eclipse
--------------------------------
+# Using the Python Client Code in Eclipse
 
 To enable ODL to communicate with the XRv network elements via Netconf, you will need to configure each network element with a cryptographic key, to enable SSH connectivity, and enable the Netconf/Yang agent to support management of the device via the Netconf protocol. After you have done that, you can use the RESTCONF APIs on ODL to cause ODL to mount the devices in ODL using Netconf, and then manage the devices via the capabilities exposed by the Yang models.
 

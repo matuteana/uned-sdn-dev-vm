@@ -1,4 +1,4 @@
-Welcome to the UNED Developer machine for the OpenDaylight (ODL) project!
+Welcome to the UNED Developer machine for the OpenDaylight (ODL) project.
 
 http://www.opendaylight.org/
 
@@ -6,17 +6,15 @@ This Developer machine has been created as a tool to help developers understand 
 
 On this machine you will find all of the tools, utilities and code you will need to build and explore ODL.
 
-Why?
-----
+# Why?
+
 Creating a stable build and test environment for ODL requires that a number of different versions of software all be installed properly, with the appropriate environment variables, and that various other aspects of the environment be aligned with that. This development VM packages all of that for you in one easy to use environment.
 
-What Next?
----------
+# What Next?
 
 The instructions below describe how to, either, build ODL, OR download a distribution bundle, and then how to start ODL. 
 
-Why Would I Build ODL Rather Than Use the Released Distribution?
-----------------------------------------------------
+# Why Would I Build ODL Rather Than Use the Released Distribution?
 
 A release of ODL is created at fixed periods, and is made available via download here:
 
@@ -26,8 +24,7 @@ That release has passed testing and so will be expected to work properly for mos
 
 If you want the latest version of ODL, with bug fixes, then you can choose to build that yourself. You should note, though, that the latest code in the Git repository may NOT always work, so there is a balance to be struck here.
 
-Clone and Build ODL and Tutorials with the Desktop Icons
-----------------------------------------------
+# Clone and Build ODL and Tutorials with the Desktop Icons
 
 This video shows how to use the desktop icons to build ODL: https://www.youtube.com/watch?v=G0UWIXU1j_M
 
@@ -39,13 +36,11 @@ Note that it is possible to start ODL twice, in which case you will need to use 
 
 Once ODL has been started, and it can take a while, open the Chrome browser from the desktop icon, and click on the "RestConf Documentation" or "DLUX UI" bookmarks. The login credentials are "admin/admin", if you are prompted for them.  When you see all of the bottom part of the web page populated with a list of APIs, or a UI page with a topology screen, then ODL has started. If not, wait a bit and then refresh the page.
 
-Python and Postman Client Utilities
-----------------------------
+# Python and Postman Client Utilities
 
 Python code and Postman scripts for ODL are available at https://github.com/CiscoDevNet/cosc-learning-labs. You can use that code to help you understand how to use the REST APIs for ODL.
 
-Using the Build Bundle
-------------------
+# Using the Build Bundle
 
 This video shows you how to download and start ODL: https://www.youtube.com/watch?v=H0-cewXbPYE
 
@@ -83,8 +78,7 @@ distribution-karaf-0.3.0-Lithium.tar.gz
 
 **DO NOT delete your downloaded distribution bundle, you will be needing it.**
 
-Starting and Stopping ODL
----------------------
+# Starting and Stopping ODL
 
 See this video for an illustration of using karaf: https://www.youtube.com/watch?v=H0-cewXbPYE
 
@@ -126,8 +120,7 @@ opendaylight-user@root>feature:install odl-base-all odl-mdsal-broker odl-restcon
 
 The feature list shown here is from the odl.cfg file on the desktop, which contains configuration for a feature set supporting Netconf/Yang, BGP-LS, PCEP and OpenFlow.
 
-What to do When It Does Not Work the Second Time
------------------------------------------
+# What to do When It Does Not Work the Second Time
 
 For reasons related to caches and locks, ODL will often work a first time, for a given installation, but not a second time for the *same* installation in the same directory.
 
@@ -144,9 +137,7 @@ OR
   - cd ~/git/odl-lithium/integration/distributions/karaf/
   - mvn clean install -nsu
 
-
-What to do When the Disk Fills Up
----------------------------
+# What to do When the Disk Fills Up
 
 If you build ODL on a regular basis, you will likely fill the Maven repository with "snapshots". Additionally, the projects in the git directory, if all built at once, can use up a lot of disk space. Since ODL is a growing project, how much exactly varies over time. It is likely that the machine disk will fill up if you try to build everything though.
 
@@ -156,16 +147,14 @@ To save even more space, you can "rm -rf" the ~/.m2/repository directory. This w
 
 At the end of the script is a command that will find every Maven pom.xml and run a "clean" build, to remove all of the build artefacts. This is not run by default, so you have to copy it and run it yourself in the git directory if you think you need to.
 
-Build Optimisation
----------------
+# Build Optimisation
 
 There are a number of techniques that one can use to optimise the performance of a Maven build. As always, there is a tradeoff between performance and accuracy, so think before you use these techniques:
 
  - No snapshot upgrades - The "-nsu" option will stop Maven downloading the snapshot metadata, which will speed up the build considerably.
   - Offline - The "-o" option will run Maven offline, so that only the contents of the local repository, ~/.m2/repository, will be used for a build, i.e. Maven will not look for new artefacts in remote repositories and so will not be making HTTP requests during the build.
 
-Contents
---------
+# Contents
 
 This machine is based on a Ubuntu 14.04.2 LTS Desktop image, with certain packages not required for development, e.g. Libre Office removed to save space. See http://www.ubuntu.com/download/desktop and http://www.ubuntu.com/legal/terms-and-policies/intellectual-property-policy.
 

@@ -6,4 +6,4 @@ After Chrome is started, press Chtrl-Shift-B to show the bookmarks, where you wi
 
 You should install Postman by clicking on the bookmark, and then clicking on "Add to Chrome". Subsequently you can click on the same bookmark to launch Postman.
 
-After having read the README file, you may want to download ODL bundle. The "Downloads | OpeenDaylight" bookmark will take you to the right page for that.
+After having read the README file, you may want to download ODL bundle. The "Downloads | OpenDaylight" bookmark will take you to the right page for that.
