@@ -6,7 +6,7 @@ A combination of this Dev VM running ODL, VIRL for virtual networks, and the cli
 
 # Instructions
 
-The instructions here consist of these main parts, and assume that a controller is running as discussed in the (README.md):
+The instructions here consist of these main parts, and assume that a controller is running as discussed in the [README.md]:
 
  - Installing VIRL, and VM Maestro on the Dev VM
  - Cloning and installing the client code and test topologies
