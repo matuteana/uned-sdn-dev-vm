@@ -141,6 +141,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "file", source: "scripts/vm_files/Desktop/README.md", destination: "~vagrant/Desktop/README.md"
   config.vm.provision "file", source: "scripts/vm_files/Desktop/Using_Chrome.md", destination: "~vagrant/Desktop/Using_Chrome.md"
   config.vm.provision "file", source: "scripts/vm_files/Desktop/ODL_and_Mininet.md", destination: "~vagrant/Desktop/ODL_and_Mininet.md"
+  config.vm.provision "file", source: "scripts/vm_files/Desktop/Yang_and_RESTCONF.md", destination: "~vagrant/Desktop/Yang_and_RESTCONF.md"
     config.vm.provision "file", source: "scripts/vm_files/Desktop/ODL_and_VIRL.md", destination: "~vagrant/Desktop/ODL_and_VIRL.md"
   config.vm.provision "file", source: "scripts/vm_files/Desktop/Stop_ODL.desktop", destination: "~vagrant/Desktop/Stop_ODL.desktop"
   config.vm.provision "file", source: "scripts/vm_files/Desktop/ODL_Status.desktop", destination: "~vagrant/Desktop/ODL_Status.desktop"
