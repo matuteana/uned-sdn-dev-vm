@@ -4,11 +4,22 @@ http://www.opendaylight.org/
 
 This Developer machine has been created as a tool to help developers understand and use the ODL technology. Any issues or feedback can be provided via this project in GitHub: https://github.com/matuteana/uned-sdn-dev-vm
 
-On this machine you will find all of the tools, utilities and code you will need to build and explore ODL.
+On this machine you will find all of the tools, utilities and code you will need to build and explore ODL. You will also find instructions on how to use those tools in these exercises:
+
+ - [Using Chrome](./Using_Chrome.md)
+ - [ODL and Mininet](./ODL_and_Mininet.md) 
+ - [ODL and VIRL](./ODL_and_VIRL.md)
+ - [Yang and RESTCONF](./Yang_and_RESTCONF.md)
 
 # Why?
 
 Creating a stable build and test environment for ODL requires that a number of different versions of software all be installed properly, with the appropriate environment variables, and that various other aspects of the environment be aligned with that. This development VM packages all of that for you in one easy to use environment and includes instructions, with links to videos, for how to use the VM and explore ODL.
+
+# Keyboard Settings
+
+It is quite likely that the default keyboard layout will not work for you. There is a bookmark in Chrome to this page which will help you change that:
+
+http://www.wikihow.com/Change-Keyboard-Layout-in-Ubuntu
 
 # What Next?
 

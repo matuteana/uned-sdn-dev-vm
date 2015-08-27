@@ -102,17 +102,17 @@ Then you should follow the same instructions as for VM Maestro above to import t
 
 Once the project has been imported it will appear in the "Project Explorer" on the left of the UI. Navigate to the "src/settings" folder in the project, by double clicking on the folder to open each folder level. Open the n-XRv.py file, corresponding to the network started in VIRL, by double clicking on it. Note the IP addresses of the network elements, which should match those of the network elements in the VIRL network started with VM Maestro. Note that 'n' corresponds to the number of XRv elements you are running.
 
-Open the "src/utils" folder and then open the "crypto_and_agent.py" file. Edit the "network_devices" list so that it contains the same IP addresses that are found in the n-XRv.py file. Then use the context menu (right mouse button) in the editor panel to select "Run As->Python Run". That will execute the Python code, which will automatically, using pexpect, telnet to the network elements, create a cryptographic key, for Netconf/SSH, and configure the netconf-yang agent. Note that, although the agent is configured already, it is best to do so again after configuring the cryptographic key.
+Open the `src/utils` folder and then open the `crypto_and_agent.py` file. Edit the `network_devices` list so that it contains the same IP addresses that are found in the `n-XRv.py` file. Then use the context menu (right mouse button) in the editor panel to select "Run As->Python Run". That will execute the Python code, which will automatically, using [pexpect](https://github.com/pexpect/pexpect), telnet to the network elements, create a cryptographic key, for Netconf/SSH, and configure the netconf-yang agent. Note that, although the agent is configured already, it is best to do so again after configuring the cryptographic key.
 
 You need to set the "NETWORK_PROFILE" environment variable to determine which of the settings files will be used by the scripts that call the ODL RESTCONF APIs. Use the "Windows" menu and select "Preferences". In "Preferences" dialog, navigate to "PyDev->Interpreters->Python Interpreter" and then select the "Environment" tab. In the "Environment" tab click on "New ...", which will cause the "New Environment Variable" dialog to be displayed. The "Name:" should be "NETWORK_PROFILE", and the "Value:" should be, for example, "3-XRv", corresponding to the topology that you started above with VM Maestro. Click on "OK" for the "New Environment Variable" dialog and again for the "Preferences" dialog. 
 
 Check that you have a running ODL controller on the Dev VM before attempting the next step.
 
-Open the "src/learning_lab" folder in the client code project and use the context menu on 00_controller.py to "Run As->Python Run". You should expect to see the output in the "Console" tab at the bottom of the UI report that the script connected successfully to the controller defined in the settings file identified by the "NETWORK_PROFILE" environment variable. If you do not see that, check that you can log into ODL with Chrome.
+Open the `src/learning_lab` folder in the client code project and use the context menu on 00_controller.py to "Run As->Python Run". You should expect to see the output in the "Console" tab at the bottom of the UI report that the script connected successfully to the controller defined in the settings file identified by the "NETWORK_PROFILE" environment variable. If you do not see that, check that you can log into ODL with Chrome.
 
 You need to cause ODL to "mount" the network device Yang models using Netconf. Before you do that, use the DLUX UI Nodes application to check that there are no nodes already in the inventory.
 
-In Eclipse, use the context menu on "01_inventory_mount.py" to  "Run As->Python Run". You should expect to see the output in the "Console" tab at the bottom of the UI report that "device_mount" is being called for the devices defined in the settings file identified by the "NETWORK_PROFILE" environment variable. Check the DLUX UI Nodes application to confirm that the devices are present in the inventory of ODL.
+In Eclipse, use the context menu on `01_inventory_mount.py` to  "Run As->Python Run". You should expect to see the output in the "Console" tab at the bottom of the UI report that `device_mount` is being called for the devices defined in the settings file identified by the "NETWORK_PROFILE" environment variable. Check the DLUX UI Nodes application to confirm that the devices are present in the inventory of ODL.
 
 **Warning**
 
@@ -121,18 +121,17 @@ The instructions above do work on the Dev VM, but sometimes do not for reasons t
 If at first you don't succeed, then reboot the VM and try again, remembering to delete the distribution directory in ~, and create a new directory by untaring the downloaded bundle, OR to rebuild the distribution in the local git repo, using these commands:
 
 ```bash
- $ cd
- $ rm -rf distribution-karaf-0.3.0-Lithium/
- $ cd Downloads/
- $ tar xf distribution-karaf-0.3.0-Lithium.tar.gz 
- $ mv distribution-karaf-0.3.0-Lithium ..
+cd
+rm -rf distribution-karaf-0.3.0-Lithium/
+cd Downloads/
+tar xf distribution-karaf-0.3.0-Lithium.tar.gz 
+mv distribution-karaf-0.3.0-Lithium ..
 ```
 
 OR
 
 ```bash
-  $ cd ~/git/odl-lithium/integration/distributions/karaf/
-  $ mvn clean install -nsu
+cd ~/git/odl-lithium/integration/distributions/karaf/
+mvn clean install -nsu
 ```
-
 
