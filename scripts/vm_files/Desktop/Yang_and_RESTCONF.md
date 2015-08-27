@@ -12,7 +12,7 @@ exercises:
 # Yang Schema and RESTCONF
 
 After startup, and upon mounting Netconf/Yang managed devices, ODL
-will populate the `cache/schema` directory with the Yang schema that
+will populate its `cache/schema` directory with the Yang schema files that
 it uses. These schema are a combination of those that are use by
 MD-SAL, loaded as a consequence of the features that you have
 installed, and those obtained from devices that are mounted using Netconf.
@@ -23,20 +23,20 @@ at the appropriate step.
 
 When you examine the Yang UI, described below, and use Postman, you
 will see that the URLs are constructed from elements of the Yang
-schema. This is illustrated in the video above.
+schema.
 
 This exercise will illustrate how that works with examples based on
-topology, inventory and interfaces.
+topology, nodes and interfaces.
 
-# VIRL Topology, Client Script Settings , VM RAM and JAVA_OPTS
+# VIRL Topology, Client Script Settings, VM RAM and JAVA_OPTS
 
 In this exercise you will use the 1-XRv VIRL topology, and a
 combination of Python scripts via the CLI and a Postman collection. Note that the
 default value for the NETWORK_PROFILE environment variable is also
-`1-XRv`.
+`1-XRv`, so you can use the Python scripts at the CLI directly.
 
 Where other exercises have been carried with the VM RAM set to 4GB,
-emperical testing shows that the Yang UI features work best with the
+empirical testing shows that the Yang UI features work best with the
 VM RAM at 6GB, and the JAVA_OPTS, that control how much RAM the Java VM
 uses for the controller, set to 5GB.
 
@@ -72,8 +72,9 @@ sudo pip install -e .
 ```
 
 Included in the `src/postman` directory of the client scripts project
-are a number of Postman "collections". You should install as
-instructed below and as shown in the video above.
+are a number of Postman "collections". You should install the
+`mdsal-ncmount` collection as
+instructed below, and as shown in the video above.
 
 # Prerequisites
 
@@ -88,7 +89,7 @@ You should ensure that you have:
 sudo mn --controller=remote,ip=127.0.0.1 --topo tree,3
 ```
 
- - Started VIRL, and used VM Maestro to laynch the 1-XRv test
+ - Started VIRL, and used VM Maestro to launch the 1-XRv test
  topology, as described in [ODL and VIRL](./ODL_and_VIRL.md).
 
  - Started ODL, either from a bundle or from a build, as described in
@@ -256,7 +257,7 @@ You can use the "Request history" to copy that URL and try it in
 Postman. The JSON result document shown after you send that request
 from Postman will show the node, with its Netconf connection
 attributes, and a list of `available-capabilities`, within which the
-`available-capability` element contains a comma-seperated list of Yang
+`available-capability` element contains a comma-separated list of Yang
 schema references.
 
 These Yang schema represent models that can be used to form RESTCONF
@@ -265,7 +266,7 @@ node. They represent what can be done with the node via Netconf and
 so are called the node ["capabilities"](https://tools.ietf.org/html/rfc6241#section-1.3).
 
 The schema files for the Yang models are stored by ODL in a
-`casge/schemas` directory, where the `cache` directory is a peer of
+`cache/schemas` directory, where the `cache` directory is a peer of
 the `bin` directory containing the `karaf` executable. In the
 `cache\schemas` directory you will see all of the schema files
 underlying the models and URLs that you have been looking at above.
@@ -276,7 +277,7 @@ will see that the latest, with a date of `2013-10-21` is being
 used. You can open the corresponding schema file
 `net-topology@2013-12-21.yang` with gedit to look at its contents.
 
-You can then use a combnation of the Yang UI and Postman to see how
+You can then use a combination of the Yang UI and Postman to see how
 the schema elements map to the model displayed in the Yang UI and the
 URLs in Postman. Note, for example, that the `topology-id` schema
 field has the value `topology-netconf` in the model and URL, This is a
@@ -293,7 +294,7 @@ Yang UI and copy the URL to use in Postman.
 What you wil see in the Postman JSON result document is the
 `interface-configurations` list element, within which is an
 `interface-configuration` element for the `MgmtEth0/0/CPU/0`
-interaface. This is the management interface on the XRv node, which
+interface. This is the management interface on the XRv node, which
 has been configured with the `172.16.1.11` IPv4 address.
 
 You will also see in the URL, after the `yang-ext:mount` element, the
@@ -312,12 +313,12 @@ data. Return to the Yang UI and select the `interface-configuration
 within the `interface-configurations` element.
 
 In the middle bar, you will see the request fields populated with the
-appropriater values, including the interface name. If you "Send" the
+appropriate values, including the interface name. If you "Send" the
 request, though, you will see an error.
 
 The issue here is that the interface name has `\` characters in it. As
 the request is sent as a URL, the `\`s in the name are interpreted as
-delimerters in the model description, not as part of the name of the
+delimiters in the model description, not as part of the name of the
 `node-id` element. This is a common issue in REST interfaces, and the
 solution is to "encode" the name.
 
