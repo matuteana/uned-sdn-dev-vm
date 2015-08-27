@@ -117,7 +117,7 @@ Chrome, you should click on the "Import" symbol in the menu bar at the
 top, and then, in the import dialog, click on the "Choose Files"
 button to navigate to that directory and open that file.
 
-The import collection will be displayed on the left of the Postman UI
+The imported collection will be displayed on the left of the Postman UI
 window. You should select the "mount iosxrv-1" item from the list
 shown, and it will be displayed in the middle panel of the UI.
 
@@ -135,8 +135,8 @@ Which matches the IP address of the IOS-XRv node running in the VIRL
 topology.
 
 You can then click on the "Send" button to cause the request to be
-made to the controller, which will cause the device to be mounted. You
-can confirm that in the DLUX UI "Nodes" application. To double check,
+made to the controller, which will cause the device to be mounted, by
+ODL using Netconf. You can confirm that in the DLUX UI "Nodes" application. To double check,
 you can also use the `./01_inventory_connected.py` script in the
 `src/learning_labs` directory to show the connected devices.
 
@@ -148,13 +148,13 @@ Postman above, using RESTCONF. You can also copy the requests made by
 the Yang UI into Postman to use them there, using the "Request
 history" window.
 
-The combination of the YangUI and Postman, then, will help you
+The combination of the Yang UI and Postman, then, will help you
 understand how Yang schema are used to construct models, and how those
 models are joined together, using extension points, to support
 navigation, using RESTCONF.
 
 When using Postman, the general method is to open a new request tab by
-clicking on the "+" symbol on the right of the tabs, and then pasting
+clicking on the `+` symbol on the right of the tabs, and then pasting
 the URL copied from the Yang UI request history into the URL field to
 the left of the "Send" button.
 
@@ -167,9 +167,9 @@ set the authorisation parameters again.
 
 Select the Yang UI in the list of DLUX UI applications on the left of
 the web UI after you log in with `admin/admin`. The Yang UI first
-spend a few moments loading modules from the controller, and will then
-display, in the "Module" panel, at the top part of the UI, all of the
-Yang modules that are available.
+takes a few moments loading modules from the controller, and will then
+display, in the "Module" panel at the top part of the UI, all of the
+top level Yang modules that are available.
 
 For the purposes of this exercise, you should select the
 `network-topology rev.2013-10-21` node and click on the `+` symbol to
@@ -192,7 +192,7 @@ model. Note that you will likely have to expand the size of the web
 browser horizontally to be able to see the data properly.
 
 In the data you will see a `topology-list` within which are shown a
-number of `topology-id` fields. These will include `flow:1`, which the
+number of `topology-id` fields. These will include `flow:1`, which is the
 OpenFlow topology from Mininet, and `topology-netconf`, which is the
 topology containing the XRv node.
 
@@ -242,7 +242,7 @@ the OpenFlow nodes, but there are no actual mount points to display
 for the OpenFlow nodes.
 
 In the case of the XRv node, the "Modules" panel will change to show a
-`yang-ext` node, which you can expand by clicking on the `+` symbol".
+`yang-ext` node, which you can expand by clicking on the `+` symbol.
 Drilling into the data model in this way, you will be able to
 get to the `interface-configurations` model element after scrolling
 about half way down. Note that there is a delay after expanding the `mount`
@@ -255,7 +255,7 @@ will change to to show a request with the topology-id set to
 
 You can use the "Request history" to copy that URL and try it in
 Postman. The JSON result document shown after you send that request
-from Postman will show the node, with its Netconf connection
+will show the node, with its Netconf connection
 attributes, and a list of `available-capabilities`, within which the
 `available-capability` element contains a comma-separated list of Yang
 schema references.
@@ -268,7 +268,7 @@ so are called the node ["capabilities"](https://tools.ietf.org/html/rfc6241#sect
 The schema files for the Yang models are stored by ODL in a
 `cache/schemas` directory, where the `cache` directory is a peer of
 the `bin` directory containing the `karaf` executable. In the
-`cache\schemas` directory you will see all of the schema files
+`cache/schemas` directory you will see all of the schema files
 underlying the models and URLs that you have been looking at above.
 
 In the case of the [`network-topology` model](https://www.ietf.org/proceedings/87/slides/slides-87-netmod-3.pdf), you will see that there
@@ -283,7 +283,7 @@ URLs in Postman. Note, for example, that the `topology-id` schema
 field has the value `topology-netconf` in the model and URL, This is a
 key value as denoted by the key symbol in the Yang UI. Note also
 the `network-topology` container in the schema, which contains a list of
-`topology`. One of these was the OPenFlow `flow:1` topology, and
+`topology`. One of these was the OpenFlow `flow:1` topology, and
 another is the `topology-netconf`.
 
 After understanding topology, which is fundamental to networking, you
@@ -300,7 +300,7 @@ has been configured with the `172.16.1.11` IPv4 address.
 You will also see in the URL, after the `yang-ext:mount` element, the
 name of the Yang schema that defines the model that the result
 document is based on: `Cisco-IOS-XR-ifmgr-cfg`. You can copy the
-schema name rom the URL
+schema name from the URL
 and look for the schema file in `cache/schemas` as before.
 
 As before, with topology, you can compare the elements of the schema
@@ -309,7 +309,7 @@ and data model are derived from the schema.
 
 The next step is to drill down into the specific interface within that
 data. Return to the Yang UI and select the `interface-configuration
-{active} {}interface-name}` element in the Modules view at the top,
+{active} {interface-name}` element in the Modules view at the top,
 within the `interface-configurations` element.
 
 In the middle bar, you will see the request fields populated with the
@@ -327,11 +327,11 @@ Decoder/Encoder". Use the Yang UI to go back up the model a level, and
 then copy the string literal of the interface name and paste it into
 the field of the "URL Decoder/Encoder", and then click on
 "Encode". Copy the result, which will have `%2F` to represent the `\`s
-and use paste that into the `node-id` field in the Yang UI and send
+and paste that into the `node-id` field in the Yang UI, and send
 the request.
 
-You now have a request URL in the history that you can use in
-Postman. Go to Postman, paste and send the URL, and you now have a
+You now have a request URL in the request history that you can use in
+Postman. Copy that URL, go to Postman, paste and send the URL, and you now have a
 result document which is the `interface-configuration` for that
 specific interface.
 
