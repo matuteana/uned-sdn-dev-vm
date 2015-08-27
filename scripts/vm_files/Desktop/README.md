@@ -39,11 +39,11 @@ If you want the latest version of ODL, with bug fixes, then you can choose to bu
 
 This video shows how to use the desktop icons to build ODL: https://www.youtube.com/watch?v=G0UWIXU1j_M
 
-On the Desktop are a number of shortcuts to help automate building and starting, stopping, and checking the status of the built version of ODL.Note that these icons are designed to be used with a version of ODL you build yourself in this VM.
+On the Desktop are a number of shortcuts to help automate building, starting, stopping, and checking the status of the built version of ODL. Note that these icons are designed to be used with a version of ODL you build yourself in this VM.
 
 The "Start ODL" shortcut will copy the odl.cfg file from the Desktop to the org.apache.karaf.features.cfg file in the etc directory for the built assembly, and then start ODL. The Stop and Status scripts will stop the running instance of ODL and check the status of the running instance.
 
-This VM is shipped WITHOUT a populated ~/.m2/repository or git projects. The Clone and Build ODL script automates the process of cloning ODL and running the Maven build for the "integration" component. This script can take hours to run. There are similar scripts for the ODL tutorials and the ODL Python and Postman client code.
+This VM is shipped WITHOUT a populated ~/.m2/repository or git projects. The Clone and Build ODL script automates the process of cloning ODL and running the Maven build for the [`integration`](https://git.opendaylight.org/gerrit/gitweb?p=integration.git;a=tree;hb=HEAD) component. This script can take hours to run. There are similar scripts for the ODL tutorials and the ODL Python and Postman client code.
 
 Note that it is possible to start ODL twice, in which case you will need to use "ps -eaf | grep karaf" to get the process number of the running karaf process, and then "kill -9 <process number>" to kill it.
 
