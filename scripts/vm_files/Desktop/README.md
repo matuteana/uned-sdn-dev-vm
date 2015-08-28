@@ -122,9 +122,9 @@ Hit '<ctrl-d>' or type 'system:shutdown' or 'logout' to shutdown OpenDaylight.
 opendaylight-user@root>
 ```
 
-The next steps vary depending on whether you are using a distribution, or you have built from git. If you are using a distribution, then you do NOT need to add the feature repositories as shown here, and you can proceed to the feature:install step below.
+The next steps vary depending on whether you are using a distribution, or you have built from git. If you are using a distribution, then you do NOT need to add the feature repositories as shown here, and you can proceed to the `feature:install` step below.
 
-If you have built from git then you can use the desktop icons. If you want to use karaf on a built distribution then you need to add the feature repositories, as in the example shown below. Note that the specific feature repositories you will need to add will change over time, so what is below is just an *example*. The definitive list of feature repositories can be found in the "featuresRepositories" section of the `~/git/odl-lithium/integration/distributions/karaf/target/assembly/etc/org.apache.karaf.features.cfg` file. Also note that the configuration file has a comma-delimited list of feature repositories, whereas, at the karaf CLI, one needs to add the feature repositories one by one as shown below.
+If you have built from git then you can use the desktop icons. If you want to use the karaf CLI with a built distribution then you need to add the feature repositories, as in the example shown below. Note that the specific feature repositories you will need to add will change over time, so what is below is just an *example*. The definitive list of feature repositories can be found in the "featuresRepositories" section of the `~/git/odl-lithium/integration/distributions/karaf/target/assembly/etc/org.apache.karaf.features.cfg` file. Also note that the configuration file has a comma-delimited list of feature repositories, whereas, at the karaf CLI, one needs to add the feature repositories one by one as shown below.
 
 ```
 opendaylight-user@root>feature:repo-add mvn:org.apache.karaf.features/standard/3.0.3/xml/features
@@ -187,7 +187,7 @@ find . -name pom.xml -exec mvn clean -fn -f -nsu {} \;
 There are a number of techniques that one can use to optimise the performance of a Maven build. As always, there is a tradeoff between performance and accuracy, so think before you use these techniques:
 
  - No snapshot upgrades - The `-nsu` option will stop Maven downloading the snapshot metadata, which will speed up the build considerably, but you will not see the latest code changes.
-  - Offline - The `-o` option will run Maven offline, so that only the contents of the local repository, `~/.m2/repository`, will be used for a build, i.e. Maven will not look for new artefacts in remote repositories and so will not be making HTTP requests during the build, but you will not see the latest code changes.
+ - Offline - The `-o` option will run Maven offline, so that only the contents of the local repository, `~/.m2/repository`, will be used for a build, i.e. Maven will not look for new artefacts in remote repositories and so will not be making HTTP requests during the build, but you will not see the latest code changes.
 
 # Contents
 
