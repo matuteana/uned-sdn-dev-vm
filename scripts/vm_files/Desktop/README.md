@@ -115,11 +115,11 @@ cd $ODL_DIR/bin
 
 ...
 
-Hit '\<tab\>' for a list of available commands
+Hit '<tab>' for a list of available commands
 and '[cmd] --help' for help on a specific command.
-Hit '\<ctrl-d\>' or type 'system:shutdown' or 'logout' to shutdown OpenDaylight.
+Hit '<ctrl-d>' or type 'system:shutdown' or 'logout' to shutdown OpenDaylight.
 
-opendaylight-user@root\>
+opendaylight-user@root>
 ```
 
 The next steps vary depending on whether you are using a distribution, or you have built from git. If you are using a distribution, then you do NOT need to add the feature repositories as shown here, and you can proceed to the feature:install step below.
