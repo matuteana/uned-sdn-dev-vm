@@ -116,9 +116,9 @@ cd $ODL_DIR/bin
 
 ...
 
-Hit '\<tab\>' for a list of available commands
-and '[cmd] --help' for help on a specific command.
-Hit '<ctrl-d>' or type 'system:shutdown' or 'logout' to shutdown OpenDaylight.
+Hit \'\<tab\>\' for a list of available commands
+and \'[cmd] --help\' for help on a specific command.
+Hit \'\<ctrl-d\>\' or type \'system:shutdown\' or \'logout\' to shutdown OpenDaylight.
 opendaylight-user@root>
 ```
 
