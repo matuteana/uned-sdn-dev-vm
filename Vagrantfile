@@ -99,13 +99,13 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", path: "scripts/build/hide_login_users.sh"
 
   # Install tools and software
+  config.vm.provision "shell", path: "scripts/build/install_wireshark.sh"
   config.vm.provision "shell", path: "scripts/build/install_chrome.sh"
   config.vm.provision "shell", path: "scripts/build/install_java.sh"
   config.vm.provision "shell", path: "scripts/build/install_pip.sh"
   config.vm.provision "shell", path: "scripts/build/install_eclipse.sh"
   config.vm.provision "shell", path: "scripts/build/install_intellij.sh"
   config.vm.provision "shell", path: "scripts/build/install_pycharm.sh"
-  config.vm.provision "shell", path: "scripts/build/install_wireshark.sh"
   config.vm.provision "shell", path: "scripts/build/install_maven.sh"
   config.vm.provision "shell", path: "scripts/build/install_git.sh"
 
