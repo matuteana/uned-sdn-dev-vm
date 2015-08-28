@@ -68,7 +68,7 @@ That site is in the bookmarks included with the Chrome browser on this VM.
 You can also use this command:
 
 ```bash
-$ wget https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.3.0-Lithium/distribution-karaf-0.3.0-Lithium.tar.gz
+wget https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.3.0-Lithium/distribution-karaf-0.3.0-Lithium.tar.gz
 ```
 
 By default, when using a browser to download, files are saved into the ~/Downloads directory. The file size is ~250-300MB, which can download in 90 secs, or 30 min, it varies a lot.
@@ -108,9 +108,9 @@ A peer of the etc directory, ../bin, contains scripts to run karaf itself, so th
 You can start ODL like this:
 
 ```bash
-$ cd $ODL_DIR/bin
-$ ./karaf
-
+cd $ODL_DIR/bin
+./karaf
+```
 
 ...
 
@@ -149,19 +149,19 @@ For reasons related to caches and locks, ODL will often work a first time, for a
 When that happens, or as a matter of general practice, you should delete the distribution directory, i.e. `rm -rf $ODL_DIR`, and create a new directory by untaring the downloaded bundle, OR to rebuild the distribution in the local git repo, using these commands:
 
 ```bash
- $ cd
- $ rm -rf distribution-karaf-0.3.0-Lithium/
- $ cd Downloads/
- $ tar xf distribution-karaf-0.3.0-Lithium.tar.gz 
- $ mv distribution-karaf-0.3.0-Lithium ..
+ cd
+ rm -rf distribution-karaf-0.3.0-Lithium/
+ cd Downloads/
+ tar xf distribution-karaf-0.3.0-Lithium.tar.gz 
+ mv distribution-karaf-0.3.0-Lithium ..
 ```
 
 OR
 
 ```bash
-  $ cd ~/git/odl-lithium/integration/distributions/karaf/
-  $ mvn clean install -nsu
-  ```
+cd ~/git/odl-lithium/integration/distributions/karaf/
+  mvn clean install -nsu
+```
   
 # What to do When the Disk Fills Up
 
@@ -176,8 +176,8 @@ To save even more space, you can `rm -rf  ~/.m2/repository`. This will mean, tho
 At the end of the script is a command that will find every Maven pom.xml and run a "clean" build, to remove all of the build artefacts. This is not run by default, so you have to copy it and run it yourself in the git directory if you think you need to.
 
 ```bash
-$ cd /home/odldev/git
-$ find . -name pom.xml -exec mvn clean -fn -f -nsu {} \; 
+cd /home/odldev/git
+find . -name pom.xml -exec mvn clean -fn -f -nsu {} \; 
 ```
 
 # Build Optimisation
