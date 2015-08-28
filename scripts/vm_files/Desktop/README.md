@@ -35,29 +35,11 @@ The releases on that dowload page have passed testing and so will be expected to
 
 If you want the latest version of ODL, with bug fixes, then you can choose to build that yourself. You should note, though, that the latest code in the Git repository may not always work either, so there is a balance to be struck here.
 
-# Clone and Build ODL and Tutorials with the Desktop Icons
-
-This video shows how to use the desktop icons to build ODL: https://www.youtube.com/watch?v=G0UWIXU1j_M
-
-On the Desktop are a number of shortcuts to help automate building, starting, stopping, and checking the status of the built version of ODL. Note that these icons are designed to be used with a version of ODL you build yourself in this VM.
-
-The "Start ODL" shortcut will copy the odl.cfg file from the Desktop to the org.apache.karaf.features.cfg file in the etc directory for the built assembly, and then start ODL. The Stop and Status scripts will stop the running instance of ODL and check the status of the running instance.
-
-This VM is shipped WITHOUT a populated ~/.m2/repository or git projects. The Clone and Build ODL script automates the process of cloning ODL and running the Maven build for the [`integration`](https://git.opendaylight.org/gerrit/gitweb?p=integration.git;a=tree;hb=HEAD) component. This script can take hours to run. There are similar scripts for the ODL tutorials and the ODL Python and Postman client code.
-
-Note that it is possible to start ODL twice, in which case you will need to use "ps -eaf | grep karaf" to get the process number of the running karaf process, and then "kill -9 <process number>" to kill it.
-
-Once ODL has been started, and it can take a while, open the Chrome browser from the desktop icon, and click on the "RestConf Documentation" or "DLUX UI" bookmarks. The login credentials are "admin/admin", if you are prompted for them.  When you see all of the bottom part of the RestConf Documentation page populated with a list of APIs, or a UI page with a topology screen, then ODL has started. If not, wait a bit and then refresh the page.
-
-# Python and Postman Client Utilities
-
-Python code and Postman scripts for ODL are available at https://github.com/CiscoDevNet/cosc-learning-labs. You can use that code to help you understand how to use the REST APIs for ODL. See this video also: http://youtu.be/6GNxAzPmClk
-
 # Using the Build Bundle
 
 This video shows you how to download and start ODL: https://www.youtube.com/watch?v=H0-cewXbPYE
 
-Building ODL does take some time, and exposes you to the vagaries of a changing code base (this *is* an open source project, and is under constant development, will all the (dis)advantages that this implies in terms of stability and latest features). If you want to do that anyway, read the sections after this one.
+Building ODL does take some time, and exposes you to the vagaries of a changing code base (this *is* an open source project, and is under constant development, will all the (dis)advantages that this implies in terms of stability and latest features). If you want to do that anyway, you can use the Desktop shortcuts as explained in "Clone and Build ODL and Tutorials with the Desktop Icons" below.
 
 If you just want to run ODL, then you can get a pre-built distribution from the download page at the OpenDaylight site:
 
@@ -93,17 +75,37 @@ Follow these instructions to unpack the distribution:
 
 **DO NOT delete your downloaded distribution bundle, you will be needing it.**
 
+# Clone and Build ODL and Tutorials with the Desktop Icons
+
+This video shows how to use the desktop icons to build ODL: https://www.youtube.com/watch?v=G0UWIXU1j_M
+
+On the Desktop are a number of shortcuts to help automate building, starting, stopping, and checking the status of the built version of ODL. Note that these icons are designed to be used with a version of ODL you build yourself in this VM.
+
+This VM is shipped WITHOUT a populated ~/.m2/repository or git projects. The "Clone and Build ODL" Desktop shortcut automates the process of cloning ODL and running the Maven build for the [`integration`](https://git.opendaylight.org/gerrit/gitweb?p=integration.git;a=tree;hb=HEAD) component. This script can take hours to run. There are similar Desktop shortcuts for the ODL tutorials and the ODL Python and Postman client code.
+
+The version of ODL built by the "Clone and Build ODL" Desktop shortcut will be in the `~git/odl-lithium/integration/distributions/karaf/target/assembly` directory. Within that directory are `bin` and `etc` directories.
+
+The "Start ODL" Desktop shortcut will copy the `odl.cfg` file from the Desktop to the `org.apache.karaf.features.cfg` file in the `etc` directory of the built assembly, and then start ODL. The "ODL Status" shortcut will check the status of the running instance. The "Stop ODL" shortcut will stop the running instance of ODL using the `stop` script in the `bin` directory of the of the built assembly.
+
+Note that it is possible to start ODL twice, in which case you will need to use "ps -eaf | grep karaf" to get the process number of the running karaf process, and then "kill -9 <process number>" to kill it.
+
+Once ODL has been started, and it can take a while, open the Chrome browser from the desktop icon, and click on the "RestConf Documentation" or "DLUX UI" bookmarks. The login credentials are "admin/admin", if you are prompted for them.  When you see all of the bottom part of the RestConf Documentation page populated with a list of APIs, or a UI page with a topology screen, then ODL has started. If not, wait a bit and then refresh the page.
+
+# Python and Postman Client Utilities
+
+Python code and Postman scripts for ODL are available at https://github.com/CiscoDevNet/cosc-learning-labs. You can use that code to help you understand how to use the REST APIs for ODL. See this video also: http://youtu.be/6GNxAzPmClk
+
 # Starting and Stopping ODL
 
 See this video for an illustration of using karaf: https://www.youtube.com/watch?v=H0-cewXbPYE
 
-ODL is started via Karaf, which loads features defined in the org.apache.karaf.features.cfg file if you use the start scripts, or defined manually via the karaf CLI, if you use the karaf CLI directly.
+ODL is started via Karaf, which loads features defined in the `org.apache.karaf.features.cfg` file if you use the `bin/start` script, or defined manually via the karaf CLI, if you use the `bin/karaf` CLI directly.
 
-If you built ODL from source, then your ODL_DIR is `~/git/odl-lithium/integration/distributions/karaf/target/assembly`, so the .cfg file is in `~/git/odl-lithium/integration/distributions/karaf/target/assembly/etc`.
+If you built ODL from source, then your `ODL_DIR` is `~/git/odl-lithium/integration/distributions/karaf/target/assembly`, so the `.cfg` file is in `~/git/odl-lithium/integration/distributions/karaf/target/assembly/etc`.
 
-If you used the bundle method, then your ODL_DIR is (version depending) `~/distribution-karaf-0.3.0-Lithium` and the .cfg file is in the `~/distribution-karaf-0.3.0-Lithium/etc` directory.
+If you used the bundle method, then your `ODL_DIR` is (version depending) `~/distribution-karaf-0.3.0-Lithium` and the `.cfg` file is in the `~/distribution-karaf-0.3.0-Lithium/etc` directory.
 
-A peer of the etc directory, ../bin, contains scripts to run karaf itself, so that you can use the karaf CLI, or start karaf and have it load the features defined in the org.apache.karaf.features.cfg file. There are also stop and status scripts in the bin dir.
+A peer of the `etc` directory, `../bin`, contains a `karaf` command, so that you can use the karaf CLI. Or you can use the  `start` script which will load the features defined in the `etc/org.apache.karaf.features.cfg` file. There are also `stop` and `status` scripts in the `bin` dir.
 
 You can start ODL like this:
 
@@ -184,8 +186,8 @@ find . -name pom.xml -exec mvn clean -fn -f -nsu {} \;
 
 There are a number of techniques that one can use to optimise the performance of a Maven build. As always, there is a tradeoff between performance and accuracy, so think before you use these techniques:
 
- - No snapshot upgrades - The `-nsu` option will stop Maven downloading the snapshot metadata, which will speed up the build considerably.
-  - Offline - The `-o` option will run Maven offline, so that only the contents of the local repository, `~/.m2/repository`, will be used for a build, i.e. Maven will not look for new artefacts in remote repositories and so will not be making HTTP requests during the build.
+ - No snapshot upgrades - The `-nsu` option will stop Maven downloading the snapshot metadata, which will speed up the build considerably, but you will not see the latest code changes.
+  - Offline - The `-o` option will run Maven offline, so that only the contents of the local repository, `~/.m2/repository`, will be used for a build, i.e. Maven will not look for new artefacts in remote repositories and so will not be making HTTP requests during the build, but you will not see the latest code changes..
 
 # Contents
 
