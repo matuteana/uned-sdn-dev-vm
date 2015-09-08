@@ -12,7 +12,9 @@ Mininet is also a great way to develop, share, and experiment with OpenFlow and 
 
 Open a terminal window (Ctrl-Alt-t) and type and enter:
 
-`sudo mn   --controller=remote,ip=127.0.0.1 --topo tree,3`
+```bash
+sudo mn --controller=remote,ip=127.0.0.1 --topo tree,3
+```
 
 Where the sudo password is " ODLDEV" by default. Note that best results are achieved if mininet is started *before* ODL is started.
 
