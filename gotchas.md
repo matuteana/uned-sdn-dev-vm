@@ -1,6 +1,6 @@
 # Things That Go Wrong
 
-Vagrant is really useful and all, but not perfect, and sometimes
+Vagrant is really useful, but not perfect, and sometimes
 fails. This is a collection of failures witnessed and what was done to
 fix the problem.
 
@@ -20,39 +20,11 @@ https://github.com/mitchellh/vagrant/issues/3083
 
 `VBoxManage dhcpserver remove --netname HostInterfaceNetworking-vboxnet0`
 
-## Network Failure During Up
-
-This error happened when there was a network connectivity failure
-during the download, see `SSL read: error:00000000:lib(0):func(0):reason(0), errno 60
-` below.
-
-Use `rm -rf ~/.vagrant.d/tmp/` to remove the temporary download data and try again. See the
-full trace below.
-
-```bash
-$ vagrant up --provider=vmware_fusion
-Bringing machine 'default' up with 'vmware_fusion' provider...
-==> default: Box 'CiscoDevNet/devnet-dev-base-vmware' could not be found. Attempting to find and install...
-    default: Box Provider: vmware\_desktop, vmware\_fusion, vmware\_workstation
-    default: Box Version: >= 0
-==> default: Loading metadata for box 'CiscoDevNet/devnet-dev-base-vmware'
-    default: URL: https://atlas.hashicorp.com/CiscoDevNet/devnet-dev-base-vmware
-==> default: Adding box 'CiscoDevNet/devnet-dev-base-vmware' (v0.0.2) for provider: vmware_desktop
-    default: Downloading: https://atlas.hashicorp.com/CiscoDevNet/boxes/devnet-dev-base-vmware/versions/0.0.2/providers/vmware_desktop.box
-An error occurred while downloading the remote file. The error
-message, if any, is reproduced below. Please fix this error and try
-again.
-
-SSL read: error:00000000:lib(0):func(0):reason(0), errno 60
-
-$ rm -rf ~/.vagrant.d/tmp/
-```
-
 ##  The box you attempted to add doesn't match the provider you specified
 
-This happens, it appears, when the metadata.json *in* the manually created VMware
+This happens, it appears, when the metadata.json *in*  the manually created VMware
 box bundle defines specific providers for VMware,
-e.g. "vmware\_fusion" and/or "vmware\_workstation". This is a  glitch in Vagrant that ought to be fixed, but clearly is
+e.g. `vmware_fusion` and/or `vmware_workstation`. This is a  glitch in Vagrant that ought to be fixed, but clearly is
 not that important yet.
 
 See this post for an example of the issue:
@@ -61,29 +33,28 @@ https://groups.google.com/forum/#!topic/vagrant-up/qhmw5SUdaic
 
 
 ```bash
-$ vagrant up --provider=vmware\_fusion
+$ vagrant up --provider=vmware_fusion
 ...
 The box you attempted to add doesn't match the provider you
 specified
 
-Provider expected: vmware\_desktop
-Provider of box: vmware\_fusion
+Provider expected: vmware_desktop
+Provider of box: vmware_fusion
 ```
 
 What makes this especially confusing is that a box added locally works
-as expected with the provider of "vmware\_fusion" in the
+as expected with the provider of `vmware_fusion` in the
 metadata.json. However, when you add the box to atlas with an internal
-provider of "vmware\_fusion", and an Atlas provider of
-"vmware\_desktop" (which is the only available "vmware" provider in
+provider of `vmware_fusion`, and an Atlas provider of
+`vmware_desktop` (which is the only available `vmware` provider in
 Atlas), and then attempts to up it from Atlas, you see the message above.
 
 In the process of trying different permutations and combintations
 here, it was discovered that *removing* the
-"vmware\_desktop" provider for the box in Atlas resulted in this error:
-
+`vmware_desktop` provider for the box in Atlas resulted in this error:
 
 ```bash
-$ vagrant up --provider=vmware\_fusion
+$ vagrant up --provider=vmware_fusion
 ...
 An error occurred while downloading the remote file. The error
 message, if any, is reproduced below. Please fix this error and try
@@ -93,7 +64,7 @@ The requested URL returned error: 404 Not Found
 ```
 
 The combination that appears to work for both locally added boxes
-*and* boxes in Atlas is to use "vmware_desktop" as the provider in the
+*and* boxes in Atlas is to use `vmware_desktop` as the provider in the
 metadata,json file in the box, and for the provider in Atlas, and
 *not* to add fusion or workstation specific providers.
 
@@ -113,7 +84,7 @@ You up the VM, as below, and then .... nothing.
 ```bash
 $ vagrant up --provider=vmware_fusion
 Bringing machine 'default' up with 'vmware_fusion' provider...
-==> default: Checking if box 'CiscoDevNet/devnet-dev-base-vmware' is up to date...
+==> default: Checking if box '...' is up to date...
 ==> default: Verifying vmnet devices are healthy...
 ==> default: Starting the VMware VM...
 ```
@@ -134,7 +105,7 @@ not to work on occasion.
 Installing VMWare tools requires more than 512MB TAM for the VM. It fails with 512MB,
 and succeeds with 1024MB. See this setting in the Vagrantfile:
 
- vmw.vmx["memsize"] = "4096"
+`vmw.vmx["memsize"] = "4096"`
 
 ##  Stuck at "Configuring network adapters within the VM..."
 
