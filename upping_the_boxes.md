@@ -32,10 +32,11 @@ details are below.
 
 The general form of the command to up a box (given a Vagrantfile in
 the current directory) is below. The "provider" argument should be
-*one* of `[virtualbox|vmware\_fusion|vmware\_workstation]`, where
+*one* of `[virtualbox|vmware_fusion|vmware_workstation]`, where
 `virtualbox` is generic for all platforms that support that provider,
-`vmware\_fusion` is for Mac OS X, and `vmware\_workstation` is for
-Windows. Note that the provider for a VMWare based box, when adding a box to Atlas, is "vmware_desktop".
+`vmware_fusion` is for Mac OS X, and `vmware_workstation` is for
+Windows. Note that the provider for a VMWare based box, when adding a
+box to Atlas, is `vmware_desktop`.
 
 The base boxes used here are available in [Atlas](https://atlas.hashicorp.com/matuteana)
 
@@ -71,7 +72,6 @@ To use the VMware Fusion provider, you need to purchase a licence
 from here: http://www.vagrantup.com/vmware#buy-now.
 
 Note that an error might occur, in which case you can just try again.
-
 
 ## Destroying the Boxes
 
